@@ -152,11 +152,11 @@ prediction = cnn_model.predict(img_array)
 
 ##  **Future Improvements**
 
-1. Implement **Ensemble Models** to combine predictions from CNN, DenseNet121, and EfficientNet-B0.  
-2. Utilize **Advanced Data Augmentation Techniques** for better generalization.  
-3. Train the models on a **larger and more diverse dataset**.  
-4. Optimize **EfficientNet-B0** with customized preprocessing and fine-tuning.  
-5. Experiment with **Transfer Learning on Medical Datasets**.  
+ 
+1. Utilize **Advanced Data Augmentation Techniques** for better generalization.  
+2. Train the models on a **larger and more diverse dataset**.  
+3. Optimize **EfficientNet-B0** with customized preprocessing and fine-tuning.  
+4. Experiment with **Transfer Learning on Medical Datasets**.  
 
 ---
 
