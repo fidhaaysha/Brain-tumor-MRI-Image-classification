@@ -1,114 +1,163 @@
-# Brain-tumor-MRI-Image-classification
-Overview
-This project aims to classify brain tumors using MRI images with state-of-the-art deep learning architectures: CNN (Convolutional Neural Network), DenseNet121, and EfficientNet-B0. The models predict four types of brain conditions:
+# **Brain Tumor MRI Image Classification using Deep Learning**
 
-Glioma
-Meningioma
-Pituitary Tumor
-No Tumor
-The dataset is sourced from Kaggle and undergoes preprocessing, augmentation, and model evaluation using metrics such as accuracy, loss, and ROC-AUC curves.
+##  **Project Overview**
 
-Table of Contents
-Dataset Description
-Project Workflow
-Requirements
-How to Run
-Model Architectures
-Evaluation Metrics
-Results
-Conclusion
-Future Improvements
-References
-Dataset Description
-The dataset is split into Training and Testing sets.
-Classes: glioma, meningioma, nontumor, pituitary.
-Images are resized to 224x224 pixels for uniform input dimensions.
-Preprocessing Steps:
+This project focuses on **classifying brain tumors** from MRI images into four categories:  
+- **Glioma**  
+- **Meningioma**  
+- **Pituitary Tumor**  
+- **No Tumor**
 
-Normalization: Pixel values scaled to [0, 1].
-Augmentation: Rotation, width/height shift, shear, zoom, and horizontal flip.
-Project Workflow
-Data Loading and Preprocessing:
+Using advanced **deep learning models** like **Convolutional Neural Networks (CNN)**, **DenseNet121**, and **EfficientNet-B0**, the aim is to evaluate their performance using key metrics such as **accuracy**, **loss**, and **ROC-AUC curves**. 
 
-Extract dataset.
-Normalize and augment images.
-Model Building:
+The project involves:  
+- **Dataset Preparation and Preprocessing**  
+- **Model Training and Evaluation**  
+- **Performance Comparison and Hyperparameter Tuning**  
+- **Real-Time Image Prediction**
+---
+##  **Dataset Details**
 
-CNN Model
-DenseNet121 Model
-EfficientNet-B0 Model
-Training:
+- **Source:** Kaggle  
+- **Categories:** Glioma, Meningioma, Pituitary, No Tumor  
+- **Train-Test Split:** Training and Testing subsets  
+- **Image Resolution:** 224x224 pixels  
 
-Use EarlyStopping and ReduceLROnPlateau callbacks.
-Evaluation:
+**Preprocessing Steps:**  
+- **Normalization:** Pixel values scaled to `[0, 1]`  
+- **Augmentation:** Rotation, width/height shift, shear, zoom, horizontal flip  
 
-Evaluate accuracy, loss, and ROC-AUC curves.
-Prediction:
+---
 
-Classify new MRI images.
-Optimization:
+##  **Project Workflow**
 
-Fine-tune hyperparameters and handle class imbalance.
-Requirements
-Ensure you have the following libraries installed:
+1. **Data Preprocessing:**  
+   - Dataset extraction  
+   - Image normalization and augmentation  
+   - Visualization of dataset class distribution and image properties  
 
-bash
-Copy code
-pip install tensorflow keras numpy matplotlib seaborn scikit-learn pillow
-Hardware Recommendations:
-GPU: NVIDIA CUDA-enabled GPU (Recommended)
-RAM: 16GB or more
-How to Run
-Clone the repository:
+2. **Model Building:**  
+   - **CNN Architecture**  
+   - **DenseNet121 (Pre-trained on ImageNet)**  
+   - **EfficientNet-B0 (Pre-trained on ImageNet)**  
 
-bash
-Copy code
+3. **Training and Tuning:**  
+   - Early Stopping  
+   - Learning Rate Reduction on Plateau  
+
+4. **Evaluation Metrics:**  
+   - Accuracy  
+   - Validation Loss  
+   - ROC-AUC Curves  
+
+5. **Prediction on New Images:**  
+   - Real-time classification of uploaded MRI images  
+
+---
+
+## **Technologies Used**
+
+- **Python 3.x**  
+- **TensorFlow / Keras**  
+- **NumPy**  
+- **Matplotlib**  
+- **Seaborn**  
+- **Scikit-learn**  
+- **Pillow (PIL)**  
+- **Google Colab (Optional for cloud execution)**  
+
+---
+
+## **How to Run the Project**
+
+### **1. Clone the Repository**
+```bash
 git clone https://github.com/yourusername/brain-tumor-classification.git
 cd brain-tumor-classification
-Place your dataset (archive.zip) in the drive folder.
+```
 
-Run the script:
+### **2. Install Required Libraries**
+```bash
+pip install tensorflow keras numpy matplotlib seaborn scikit-learn pillow
+```
 
-bash
-Copy code
+### **3. Place the Dataset**
+- Ensure your dataset (`archive.zip`) is in the project directory.
+
+### **4. Run the Script**
+```bash
 python brain_tumor_mri_image_classification.py
-To test a specific image:
+```
 
-python
-Copy code
+### **5. Test with an Image**
+Update the `img_path` variable in the script:
+```python
 img_path = '/content/test_subset/glioma/Te-gl_0018.jpg'
-Results will be displayed with the actual and predicted tumor type.
+```
 
-Model Architectures
-1. Convolutional Neural Network (CNN)
-Layers: Conv2D, MaxPooling2D, Flatten, Dense, Dropout
-Optimizer: Adam
-Loss Function: Categorical Crossentropy
-2. DenseNet121
-Pretrained Weights: ImageNet
-Custom Layers: GlobalAveragePooling2D, Dense, Dropout
-Optimizer: Adam
-3. EfficientNet-B0
-Pretrained Weights: ImageNet
-Custom Layers: GlobalAveragePooling2D, Dense, Dropout
-Optimizer: Adam
-Evaluation Metrics
-Accuracy: Measures the percentage of correct predictions.
-Loss: Measures prediction error.
-ROC-AUC Curve: Evaluates multi-class predictive performance.
-Results
-Model	Accuracy (%)	Validation Loss	ROC-AUC
-CNN	89.29	0.35	0.85
-DenseNet121	81.19	0.50	0.78
-EfficientNet-B0	25.00	1.20	0.55
-Conclusion
-The CNN model outperformed DenseNet121 and EfficientNet-B0 in accuracy and overall reliability.
-DenseNet121 showed moderate performance with some limitations on class imbalance.
-EfficientNet-B0 struggled to adapt to the dataset despite pre-trained weights.
-The project highlights the potential of CNN architectures in medical image classification and emphasizes the importance of hyperparameter tuning and dataset quality.
+Run the script again to see the predicted class and the actual class.
 
-Future Improvements
-Implement ensemble models combining CNN, DenseNet, and EfficientNet.
-Use a larger and more balanced dataset for improved generalization.
-Apply advanced data augmentation techniques.
-Explore transfer learning with more specialized architectures.
+---
+
+##  **Model Architectures**
+
+### **1. CNN (Convolutional Neural Network)**
+- Multiple convolutional and pooling layers  
+- Dense layers for final classification  
+- Dropout layers for overfitting prevention  
+
+### **2. DenseNet121**
+- Pre-trained on **ImageNet**  
+- Dense connectivity between layers  
+- Fine-tuned top layers for classification  
+
+### **3. EfficientNet-B0**
+- Pre-trained on **ImageNet**  
+- Compound scaling for better efficiency  
+- Custom layers for final classification  
+
+---
+
+##  **Results and Observations**
+
+- The **CNN model** delivered the **best results**, with an accuracy of **89.29%**. Its consistent performance across training and validation data highlights its ability to extract meaningful features from MRI images.
+
+- **DenseNet121**, while showing promise with an accuracy of **81.19%**, struggled with class imbalance. Despite leveraging pre-trained weights, it required more extensive fine-tuning for optimal performance.
+
+- **EfficientNet-B0** underperformed significantly, achieving only **25% accuracy**. The architecture, though powerful in general image classification tasks, did not adapt well to the MRI dataset, indicating a need for further optimization.
+
+- **ROC-AUC curves** across all models revealed challenges in achieving robust predictive power, suggesting that additional work is needed on data augmentation, preprocessing, and hyperparameter tuning.
+
+**Key Insight:**  
+**CNN architecture is the most suitable for brain tumor classification tasks based on this dataset, offering a good balance of accuracy and computational efficiency.**
+
+---
+
+##  **How to Make Predictions on New Images**
+
+1. Place your MRI image in the project folder.  
+2. Update the file path in the script:
+```python
+img_path = '/content/test_subset/glioma/Te-gl_0018.jpg'
+```
+3. Run the prediction code:
+```python
+prediction = cnn_model.predict(img_array)
+```
+4. The output will display:  
+   - **Actual Class:** `Glioma`  
+   - **Predicted Class:** `Glioma`
+
+---
+
+##  **Future Improvements**
+
+1. Implement **Ensemble Models** to combine predictions from CNN, DenseNet121, and EfficientNet-B0.  
+2. Utilize **Advanced Data Augmentation Techniques** for better generalization.  
+3. Train the models on a **larger and more diverse dataset**.  
+4. Optimize **EfficientNet-B0** with customized preprocessing and fine-tuning.  
+5. Experiment with **Transfer Learning on Medical Datasets**.  
+
+---
+
+
